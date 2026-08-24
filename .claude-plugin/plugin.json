@@ -1,0 +1,13 @@
+{
+  "name": "build-companion",
+  "description": "Compile a live board of what is built, what is in flight, what is finished but not deployed, and what was discussed and never built. A reverse issue tracker for people who build with Claude Code but don't come from software.",
+  "version": "2.0.0",
+  "author": {
+    "name": "ulrichmonthe",
+    "url": "https://github.com/ulrichmonthe"
+  },
+  "homepage": "https://github.com/ulrichmonthe/build-companion",
+  "repository": "https://github.com/ulrichmonthe/build-companion",
+  "license": "MIT",
+  "keywords": ["status", "project-management", "non-technical", "dashboard", "planning"]
+}

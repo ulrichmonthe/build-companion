@@ -10,18 +10,8 @@
     {
       "name": "build-companion",
       "source": "./",
-      "skills": ["./"],
-      "description": "Compile a live board of what is built, what is in flight, what is finished but not deployed, and what was discussed and never built.",
-      "version": "2.0.0",
-      "author": {
-        "name": "ulrichmonthe",
-        "url": "https://github.com/ulrichmonthe"
-      },
-      "homepage": "https://github.com/ulrichmonthe/build-companion",
-      "license": "MIT",
       "category": "productivity",
-      "tags": ["status", "project-management", "non-technical", "dashboard", "planning"],
-      "strict": false
+      "tags": ["status", "project-management", "non-technical", "dashboard", "planning"]
     }
   ]
 }

@@ -165,7 +165,8 @@ layout — PRs are welcome.
 ```
 build-companion/
 ├── .claude-plugin/
-│   └── marketplace.json            # makes the repo installable as a plugin
+│   ├── marketplace.json            # makes the repo installable as a plugin
+│   └── plugin.json                 # the plugin's own identity, wherever it is listed
 ├── SKILL.md                        # instructions Claude Code follows
 ├── README.md
 ├── LICENSE                         # MIT
@@ -179,9 +180,13 @@ build-companion/
 ```
 
 The repository root doubles as the skill folder, which is why both install
-methods above work from the same layout: the marketplace entry uses
-`"source": "./"` with `"skills": ["./"]`, and a manual clone lands `SKILL.md`
+methods above work from the same layout: a plugin whose single `SKILL.md` sits at
+its root is a supported layout, and a manual clone lands that same `SKILL.md`
 exactly where Claude Code looks for it.
+
+`plugin.json` carries the name, version, description and licence, so they follow
+the plugin into any marketplace that lists it — including one whose catalogue
+entry declares nothing but a name and a source.
 
 ## FAQ
 

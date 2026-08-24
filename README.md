@@ -74,17 +74,37 @@ in your project and that you own.
 - The board is **read-only by design**: decisions happen in the conversation, the
   board reflects them. That keeps the architecture honest and dead simple.
 
-## Install (2 minutes)
+## Install
 
 Requires [Claude Code](https://code.claude.com/docs) and Python 3 (only for the
 one-line local file server).
+
+Inside Claude Code, add this repo as a marketplace and install the plugin:
+
+```
+/plugin marketplace add ulrichmonthe/build-companion
+/plugin install build-companion@build-companion
+```
+
+If the install summary says `Run /reload-plugins to activate.`, run that. Install
+to **user scope** and it works in every project on your machine.
+
+You get updates with `/plugin marketplace update build-companion`, and you can
+remove it cleanly with `/plugin uninstall build-companion@build-companion`.
+
+<details>
+<summary>Or install it by hand, without the plugin system</summary>
+
+The repository root <em>is</em> the skill, so cloning it into your skills folder
+works too:
 
 ```bash
 git clone https://github.com/ulrichmonthe/build-companion.git ~/.claude/skills/build-companion
 ```
 
-Restart Claude Code. That's it — it's a personal skill, so it works in **every**
-project on your machine.
+Restart Claude Code. You won't get updates or a clean uninstall this way, but
+nothing else differs.
+</details>
 
 ## Use
 
@@ -93,15 +113,19 @@ In any project, just start building, or say:
 > "Set up the build companion for this project."
 
 Claude creates `build-status.json` and copies `dashboard.html` into the project.
-Then open the board:
+Then serve the project folder from a second terminal:
 
 ```bash
-bash ~/.claude/skills/build-companion/scripts/dashboard.sh
+python3 -m http.server 4321
 ```
 
-It opens at http://localhost:4321/dashboard.html. Give it a full browser window —
-the board is wide, not a sidebar. From then on it updates itself as you and
-Claude talk.
+Open http://localhost:4321/dashboard.html and give it a full browser window — the
+board is wide, not a sidebar. From then on it updates itself as you and Claude
+talk.
+
+There is also a launcher script that serves the folder and opens the browser for
+you, `scripts/dashboard.sh`. Its path depends on how you installed, so just ask
+Claude to start the board and it will use the right one.
 
 Try the demo without a real project: copy `assets/build-status.example.json` to a
 folder as `build-status.json`, copy `assets/dashboard.html` beside it, run the
@@ -140,6 +164,8 @@ layout — PRs are welcome.
 
 ```
 build-companion/
+├── .claude-plugin/
+│   └── marketplace.json            # makes the repo installable as a plugin
 ├── SKILL.md                        # instructions Claude Code follows
 ├── README.md
 ├── LICENSE                         # MIT
@@ -151,6 +177,11 @@ build-companion/
 └── scripts/
     └── dashboard.sh                # serve + open the board
 ```
+
+The repository root doubles as the skill folder, which is why both install
+methods above work from the same layout: the marketplace entry uses
+`"source": "./"` with `"skills": ["./"]`, and a manual clone lands `SKILL.md`
+exactly where Claude Code looks for it.
 
 ## FAQ
 

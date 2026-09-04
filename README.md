@@ -12,6 +12,9 @@ founders, designers, operators, students.
 It is a **reverse issue tracker**. Nobody writes tickets up front. Claude writes
 them down as it builds, so one page tells you where everything actually stands.
 
+**→ [See a live board](https://ulrichmonthe.github.io/build-companion/)** — the
+sample project, nothing to install.
+
 ## The one idea that makes it work
 
 Every piece of work carries two facts, and the board refuses to confuse them:
@@ -129,7 +132,8 @@ Claude to start the board and it will use the right one.
 
 Try the demo without a real project: copy `assets/build-status.example.json` to a
 folder as `build-status.json`, copy `assets/dashboard.html` beside it, run the
-script.
+script. Or just open the [hosted demo](https://ulrichmonthe.github.io/build-companion/),
+which is that same pair of files served from `docs/`.
 
 ## The status file is yours
 
@@ -175,8 +179,11 @@ build-companion/
 │   └── build-status.example.json   # demo data + init template
 ├── references/
 │   └── STATUS-FORMAT.md            # full field-by-field schema
-└── scripts/
-    └── dashboard.sh                # serve + open the board
+├── scripts/
+│   └── dashboard.sh                # serve + open the board
+└── docs/                           # the hosted demo (GitHub Pages)
+    ├── index.html                  # a verbatim copy of the board
+    └── build-status.json           # a copy of the example data
 ```
 
 The repository root doubles as the skill folder, which is why both install
